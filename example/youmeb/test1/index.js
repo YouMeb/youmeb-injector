@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($config, $test2) {
+module.exports = ['$config', '$test2', function ($config, $test2) {
 
   console.log($config.get('test1.msg'));
   
@@ -10,4 +10,4 @@ module.exports = function ($config, $test2) {
     done();
   });
 
-};
+}];

@@ -1,15 +1,34 @@
 # youmeb-injector
 
-這個 module 可以單獨與 express 使用，也會內建於 youmeb.js，youmeb.js 中會再做一些包裝。
+## Quick start
 
-### 要處理的事情
+### main file
 
-1. 跑指定目錄下的的所有目錄，檢查他們的 package.json
-2. 檢查有沒有版本號衝突，或相依 package 沒裝到
-3. 初始化所有 package
-4. require package 的方法
+    var injector = new Injector();
 
-### 不處理的事情
+    injector.initConfig({
+      test: {
+        msg: 'hello world !'
+      }
+    });
 
-1. package 安裝（ypm - youmeb package manager）
-2. 相依 package 安裝（ymp - youmeb package manager）
+    injector.loadPackages(path.join(__dirname, 'youmeb'), function () {
+      injector.init(function (err) {
+        if (err) {
+          console.error(err);
+        }
+      });
+    });
+
+### package main file
+
+    // package name: test
+    module.exports = function ($config, $dependencyPackage) {
+      // $config namespace: _.config
+
+      this.on('init', function (config) {
+        // config namespace: _.config.test
+
+        console.log(config.get('msg') === $config.get('test.msg')); // true
+      });
+    };
