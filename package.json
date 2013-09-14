@@ -1,6 +1,6 @@
 {
   "name": "youmeb-injector",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "這個 module 可以單獨與 express 使用，也會內建於 youmeb.js，youmeb.js 中會再做一些包裝。",
   "main": "lib/injector.js",
   "dependencies": {
