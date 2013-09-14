@@ -32,3 +32,9 @@
         console.log(config.get('msg') === $config.get('test.msg')); // true
       });
     };
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2013 YouMeb and contributors.
